@@ -20,7 +20,9 @@ class Intro extends Component {
             marginTop: '50%',
             marginBottom: '10%',
             marginHorizontal: '10%',
+            // transform:[{ rotateZ: '0.785398rad' }],
           }}
+          
           source={require('./asset/homee.png')}
         />
         <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center',color:'black'}}>

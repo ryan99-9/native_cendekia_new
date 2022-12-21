@@ -46,11 +46,11 @@ class Home extends Component {
           source={require('../asset/side1.jpg')}
           style={{width:'100%',height:'100%',resizeMode:'cover'}}
         >
-          <View style={{height:'100%',width:'100%',paddingStart:20,paddingEnd:2}} >
-            <Text style={{marginLeft:0,fontSize:30,color:'white',fontWeight:'bold', textAlign:'left',marginBottom:0,marginTop:50}} >
+          <View style={{height:'100%',width:'100%',paddingStart:30,paddingEnd:2}} >
+            <Text style={{marginLeft:0,fontSize:30,color:'white',fontWeight:'bold', textAlign:'left',marginBottom:0,marginTop:100}} >
               About Me </Text>
               <View style={{width:'100%'}}>
-              <DataTable style={{marginLeft:-20,padding:0,marginTop:30,width:'100%'}}>
+              <DataTable style={{marginLeft:-20,padding:0,marginTop:40,width:'100%'}}>
             <DataTable.Row>
               <DataTable.Cell><Text style={styles.textHeader}> Id Pengajar</Text></DataTable.Cell>
               <DataTable.Cell><Text style={styles.textRow}>{this.state.id}</Text></DataTable.Cell>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   textRow: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textAlign: "center"}
 });
 export default Home;

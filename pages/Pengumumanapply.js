@@ -16,7 +16,7 @@ class Home extends Component {
       //id dari data pengajar untuk show notify pengajar sesuai id pengajarnya
       id_pengajar:null,
       //isi pesan notify pengajar yang ingin ditampilkan
-      pesan:"",
+      pesan:[],
 
     };
   }
@@ -31,18 +31,23 @@ class Home extends Component {
         Authorization: `Bearer ${res}`
       }}).then(res =>{
         res.data.map(item=>{
-          if(item.email === this.state.email_user){this.setState({id_pengajar:item.id}), console.log(`Id Pengajar : ${item.id}`)}
+          if(item.email === this.state.email_user){
+            this.setState({id_pengajar:item.id}), console.log(`Id Pengajar : ${item.id}`)
+          }
         })
       })
     })
     AsyncStorage.getItem('token',(err,res)=>{
       Axios.get(`https://admin.menujudigital.com/api/notifypengajar`,{headers: {
         Authorization: `Bearer ${res}`
-      }}).then(res =>{
+      }}).then((res) =>{
+        // console.log(res.data);
         res.data.map(item=>{
-          if(item.id_pengajar === this.state.id_pengajar){this.setState({pesan:item.pesan}), console.log(`Pesan dari Admin : ${item.pesan}`)}
+          if(item.id_pengajar == this.state.id_pengajar){
+            this.setState({pesan:item.pesan}), console.log(`Pesan dari Admin : ${item.pesan}`)
+          }
         })
-      })
+      }).catch(err=> console.log(err))
     })
   }
   

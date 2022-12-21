@@ -15,7 +15,7 @@ class Home extends Component {
     super(props);
     this.state = {
       nama_pengajar:"",
-      id_pengajar:null,
+      id_pengajar:0,
       asal_kampus:"",
       no_telp:"",
       email:"",
@@ -37,12 +37,23 @@ class Home extends Component {
       email:this.state.email,
       mapel:this.state.mapel,
     }
-    if(applydata.nama_pengajar.length === 0 || applydata.id_pengajar === null||applydata.asal_kampus.length ===0||applydata.no_telp.length===0||applydata.email.length===0||applydata.mapel.length===0){ return alert('Lengkapi semua data')}
+    let notify = {
+      id_pengajar : this.state.id_pengajar,
+      nama_pengajar : this.state.nama_pengajar, 
+    }
+    if(applydata.nama_pengajar.length === 0 || applydata.id_pengajar.length === 0||applydata.asal_kampus.length ===0||applydata.no_telp.length===0||applydata.email.length===0||applydata.mapel.length===0){ return alert('Lengkapi semua data')}
     Axios.post(`https://admin.menujudigital.com/api/apply`, applydata, {
       headers: {
         Authorization: `Bearer ${this.state.token}`,
       }
-    }) .then((res) => {console.log(res.data),alert('Permintaan berhasil dikirim'),this.props.navigation.navigate('HOME')})
+    }) .then((res) => {
+      Axios.post(`https://admin.menujudigital.com/api/notifyadmin`, notify, {
+      headers: {
+        Authorization: `Bearer ${this.state.token}`,
+      }
+    }).then((ress)=>{console.log(ress.data);}).catch(errr=>console.log(errr))
+      console.log(res.data),alert('Permintaan berhasil dikirim'),this.props.navigation.navigate('HOME')
+    })
   }
   render() {
     return (

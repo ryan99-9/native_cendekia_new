@@ -44,7 +44,7 @@ const App = () => {
           <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }}/>
           <Stack.Screen name="HOME" component={Home} options={{headerShown:false}}/>
           <Stack.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
-          <Stack.Screen name="Absensi" component={Absensi} />
+          <Stack.Screen name="Absensi" component={Absensi} options={{headerShown:false}}/>
           <Stack.Screen name="Apply" component={Apply} />
           <Stack.Screen name="Intro" component={Intro} options={{headerShown:false}} />
           <Stack.Screen name="Pengumumanapply" component={Pengumumanapply} options={{headerShown:false}}/>

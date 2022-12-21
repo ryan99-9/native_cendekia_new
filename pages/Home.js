@@ -13,10 +13,10 @@ class Home extends Component {
     this.state = {
       nama: "dummy",data:[],token:'', id_user:"",email:"",
       carouselData: [
-        [require('../asset/iklan23.jpg'),''],
-        [require('../asset/iklan4.jpg'),''],
-        [require('../asset/iklan12.jpg'),""],
-        [require('../asset/iklan33.jpg'),""],
+        [require('../asset/iklan23.jpg'),'',''],
+        [require('../asset/iklan4.jpg'),'',''],
+        [require('../asset/iklan12.jpg'),"",''],
+        [require('../asset/iklan33.jpg'),"",''],
       ],
     };
   }
@@ -31,10 +31,10 @@ class Home extends Component {
       }}).then(res =>{
         console.log(res.data);
         this.setState({carouselData:[
-          [require('../asset/iklan23.jpg'),res.data[0].teks],
-          [require('../asset/iklan4.jpg'),res.data[1].teks],
-          [require('../asset/iklan12.jpg'),res.data[2].teks],
-          [require('../asset/iklan33.jpg'),res.data[3].teks],
+          [require('../asset/iklan23.jpg'),res.data[0].judul,res.data[0].teks],
+          [require('../asset/iklan4.jpg'),res.data[1].judul,res.data[1].teks],
+          [require('../asset/iklan12.jpg'),res.data[2].judul,res.data[2].teks],
+          [require('../asset/iklan33.jpg'),res.data[3].judul,res.data[3].teks],
         ]})
       })
       //set Id Pengajar
@@ -109,8 +109,11 @@ class Home extends Component {
                   <ImageBackground
                     source={item[0]}
                     style={{width: imageW, height: imageH, resizeMode: 'cover'}}
-                  ><Text style={{marginTop:-50, height:'100%',width:'100%',paddingStart:45,paddingEnd:40,fontSize:16,textAlignVertical:'center',color:'white',fontWeight:'bold', textAlign:'right'}}>
-                    {item[1]}</Text></ImageBackground>
+                  >
+                    <View style={{display:'flex',flexDirection:'column',height:'100%',width:'100%',marginTop:140,paddingRight:40,paddingLeft:40}}><Text style={{marginTop:0, paddingStart:0,paddingEnd:0,fontSize:24,textAlignVertical:'center',color:'white',fontWeight:'bold', textAlign:'right'}}>
+                    {item[1]}</Text>
+                    <Text style={{marginTop:0,paddingStart:0,paddingEnd:0,fontSize:16,textAlignVertical:'center',color:'white',fontWeight:'bold', textAlign:'right'}}>
+                    {item[2]}</Text></View></ImageBackground>
                 </View>
               );
             }}
